@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "test": "tsc && mocha ./dist/pruebaTDD.test.js"
+  },
+  "dependencies": {
+    "@types/mocha": "^5.2.5",
+    "@types/should": "^13.0.0",
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0",
+    "should": "^13.2.3"
+  }
+}
