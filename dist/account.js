@@ -68,7 +68,6 @@ class Account {
                 let reSum = Number(valor[i]) * (i + 1);
                 sum = sum + reSum;
             }
-            console.log(sum);
             let resul = sum % 11;
             if (resul === 0) {
                 return true;

@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 require("mocha");
 require("should");
 const account_1 = require("./account");
+const validator_1 = require("./validator");
 describe("nombre paquete", () => {
     it("deberia funcionar", () => {
         const resultado = true;
@@ -88,10 +89,24 @@ describe("pruebaTarea", () => {
             const resultado = cuenta.validar();
             resultado.should.be.equal(false);
         });
-        it("la cuneta es correcta porque la longitud es igual a 9", () => {
+        it("la cuenta es correcta porque la longitud es igual a 9", () => {
             const cuenta = new account_1.Account(834458901, "6665544", "maria");
             const resul = cuenta.validar();
             resul.should.be.equal(true);
+        });
+    });
+    describe("validacionDigitos", () => {
+        const valor = `
+                _  _     _  _  _  _  _  _
+              | _| _||_||_ |_   ||_||_|| |
+              ||_  _|  | _||_|  ||_| _||_|
+            `;
+        const valor2 = `    _  _     _  _  _  _  _  _ \n  | _| _||_||_ |_   ||_||_|| |\n  ||_  _|  | _||_|  ||_| _||_|`;
+        it("el número correcto es", () => {
+            const validarnum = new validator_1.validator();
+            const longmatriz = validarnum.validarMatriz(valor2);
+            longmatriz.should.be.equal("1234567890");
+            console.log(longmatriz);
         });
     });
 });

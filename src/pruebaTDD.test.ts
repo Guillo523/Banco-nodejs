@@ -1,6 +1,7 @@
 import "mocha";
 import "should";
 import {Account} from "./account"
+import { validator } from "./validator";
 
 describe("nombre paquete", () => {
     it("deberia funcionar", () => {
@@ -113,11 +114,28 @@ describe("pruebaTarea", () => {
            resultado.should.be.equal(false);
 
         })
-        it ("la cuneta es correcta porque la longitud es igual a 9", () =>{
+        it ("la cuenta es correcta porque la longitud es igual a 9", () =>{
             const cuenta = new Account(834458901,"6665544", "maria");
             const resul = cuenta.validar();
 
             resul.should.be.equal(true);
+        })
+    })
+    describe("validacionDigitos",() => {
+        const valor = `
+                _  _     _  _  _  _  _  _
+              | _| _||_||_ |_   ||_||_|| |
+              ||_  _|  | _||_|  ||_| _||_|
+            `;
+
+       const valor2 =  `    _  _     _  _  _  _  _  _ \n  | _| _||_||_ |_   ||_||_|| |\n  ||_  _|  | _||_|  ||_| _||_|`;
+
+        it ("el número correcto es", () =>{
+            const validarnum = new validator();
+            const longmatriz = validarnum.validarMatriz(valor2);
+
+            longmatriz.should.be.equal("1234567890");
+            console.log(longmatriz);
         })
     })
      
