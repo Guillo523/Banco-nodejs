@@ -18,6 +18,9 @@ class LinkedList {
     getHead() {
         return this.head;
     }
+    getTail() {
+        return this.tail;
+    }
     addNode(node) {
         if (this.head === undefined) {
             this.head = node;
@@ -27,14 +30,41 @@ class LinkedList {
         }
         this.tail = node;
     }
+    removeNode(position) {
+        if (position <= 0) {
+            this.head = this.atPosition(1);
+        }
+        if (this.atPosition(position) === this.tail) {
+            this.tail = this.atPosition(position - 1);
+        }
+        this.atPosition(position - 1).setNext(this.atPosition(position + 1));
+    }
+    atPosition(position) {
+        var currentNode = this.getHead();
+        for (let index = 0; index < position; index++) {
+            if (currentNode == undefined) {
+                break;
+            }
+            currentNode = currentNode.getNext();
+        }
+        return currentNode;
+    }
 }
 var list = new LinkedList();
-list.addNode(new ListNode(1));
-list.addNode(new ListNode(2));
-list.addNode(new ListNode(8));
-list.addNode(new ListNode(4));
-list.addNode(new ListNode(15));
-list.addNode(new ListNode(13));
+list.addNode(new ListNode("A"));
+list.addNode(new ListNode("b"));
+list.addNode(new ListNode("d"));
+list.addNode(new ListNode("Y"));
+list.addNode(new ListNode("K"));
+list.addNode(new ListNode("I"));
+//list.atPosition(100)//.setNext(undefined);
+list.removeNode(5);
+console.log(list.getTail());
+console.log("-----------------------");
+list.addNode(new ListNode("g"));
+list.addNode(new ListNode("t"));
+list.addNode(new ListNode("p"));
+list.addNode(new ListNode("q"));
 var currentNode = list.getHead();
 while (currentNode != undefined) {
     console.log(currentNode.value);
